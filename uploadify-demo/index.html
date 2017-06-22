@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="uplodify/uploadify.css">
+    <style type="text/css">
+        .up-btn {
+            background: red
+        }
+    </style>
+</head>
+
+<body>
+    <input type="file" name="" id="file_upload_1">
+
+    <!-- 1 引入jQuery -->
+    <script src="../jquery.js"></script>
+    <!-- 2 引入插件js -->
+    <script src="uplodify/jquery.uploadify.js"></script>
+    <script type="text/javascript">
+        // 文件上传是通过 flash 来实现的，所以，需要将 falsh 文件
+        // 引入到页面中才行！
+
+        $(function() {
+            $('#file_upload_1').uploadify({
+                height: 100,
+                width: 200,
+                // // 指定按钮的类名
+                // buttonClass:  'up-btn',
+                // // 修改鼠标样式
+                // buttonCursor : 'arrow',
+                // // 按钮图片
+                // buttonImage : './imgs/monkey.png',
+                buttonText: '请选择图片。。。',
+                // 相当于 表单元素的name 属性的作用，服务端会根据这个名字
+                // 来获取到上传的文件
+                fileObjName: 'the_files',
+                // 文件大小限制
+                fileSizeLimit: '100KB',
+                // 文件描述
+                fileTypeDesc: '图片',
+                // 限制上传文件的类型
+                // fileTypeExts : '*.gif; *.jpg; *.png',
+                fileTypeExts: '*.png',
+                // 上传文字
+                itemTemplate: '',
+                // 请求类型
+                method: 'post',
+                // 引入 falsh 文件
+                swf: 'uplodify/uploadify.swf',
+                // 指定上传接口地址
+                uploader: 'uplodify/uploadify.php',
+
+                onUploadSuccess: function (file) {
+                    console.log(arguments);
+                }
+            });
+        })
+        
+    </script>
+</body>
+
+</html>

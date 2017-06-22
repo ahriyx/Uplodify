@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./uploadify-demo/uplodify/uploadify.css">
+  <style>
+    .cls {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="file" id="file_upload_1">
+
+  <script src="./jquery.js"></script>
+  <script src="./uploadify-demo/uplodify/jquery.uploadify.js"></script>
+  <script>
+    // 可以通过 file 来实现文件上传：
+    // input type="file" 
+
+    // 在项目中，我们通过插件： uploadify 完成，头像上传的功能
+    // 两个版本：
+    // HTML5 version ：不需要考虑兼容性问题使用
+    // flash version ：兼容各个浏览器
+
+    $(function () {
+      $("#file_upload_1").uploadify({
+        height: 100,
+        width: 120,
+        buttonClass: 'cls', 
+        buttonText : 'BROWSE...',
+
+        // 相当于表单元素的 name 属性，服务端会获取到 tc_avatar 对应上传的内容
+        // tc_avatar = '图片'
+        fileObjName : 'tc_avatar',
+
+        fileTypeDesc : 'Any old file you want...',
+
+        // 限制 上传文件的格式（后缀名）
+        fileTypeExts : '*.png',
+
+        // 上传模板
+
+        // 上传文件请求的类型
+        method: 'post',
+
+        // 上传文件大小限制
+        fileSizeLimit : '1MB',
+        
+        buttonImage : './uploadify-demo/imgs/monkey.png',
+        swf: './uploadify-demo/uplodify/uploadify.swf',
+        uploader: './uploadify-demo/uplodify/uploadify.php',
+
+        // 文件上传成功的回调函数
+        onUploadSuccess: function(file, data, response) {
+
+        }
+      });
+    });
+
+  </script>
+</body>
+
+</html>
